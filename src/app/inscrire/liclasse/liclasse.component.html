@@ -1,0 +1,52 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 8px;">
+  <a class="navbar-brand" href="#">Student List</a>
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" style="margin-right: 15px">
+      <button class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+
+    </li>
+    <div class="form-inline">
+      <input class="form-control mr-sm-2" type="text">
+      <!-- <button class="btn btn-success" type="submit">Search</button> -->
+    </div>
+  </ul>
+</nav>
+<br />
+  <div class="container-fluid">
+    <h1>Liste des élèves de la classe {{c}}</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Phone</th>
+          <th>Adresse</th>
+          <th>Sexe</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of listei">
+          <ng-container *ngIf="doc.promo==p && doc.classe.nom==c">
+            <td>{{ doc.etudiant.id }}</td>
+          <td>{{ doc.etudiant.name }}</td>
+          <td>{{ doc.etudiant.prenom }}</td>
+          <td>{{ doc.etudiant.phone }}</td>
+          <td>{{ doc.etudiant.address }}</td>
+          <td>{{ doc.etudiant.sexe }}</td>
+          <li><a style="text-decoration: none;" [routerLink]="['/note']"
+              [queryParams]="{ idetudiant:doc.etudiant.id,nom:doc.etudiant.name,prenom:doc.etudiant.prenom,address:doc.etudiant.address,sexe:doc.etudiant.sexe,phone:doc.etudiant.phone,email:doc.etudiant.email}">Ajouter
+              note</a></li>
+            </ng-container>
+        </tr>
+        <tr *ngIf="liste && liste.length == 0">
+          <td colspan="7">No records found!</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+

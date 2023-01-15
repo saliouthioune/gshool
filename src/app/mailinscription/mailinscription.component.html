@@ -1,0 +1,30 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+  <span>{{id}} {{ide}}</span>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire d'envoie dee message a un élève</h5>
+                    <form (ngSubmit)="onSubmit()" #contacto>
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" [(ngModel)]="mail.id" >
+                      </div>
+                        <div class="form-group">
+                          <label for="nombre">Subject</label>
+                          <input type="text" class="form-control" id="emailSubject" required [(ngModel)]="mail.emailSubject" name="emailSubject">
+                        </div>
+                        <div class="form-group">
+                          <label for="mensaje">Content</label>
+                          <textarea name="emailContent" id=""  class="form-control" rows="7"  [(ngModel)]="mail.emailContent" name="emailContent"></textarea>
+                          
+                        </div>
+                    
+                        <button type="submit" class="btn btn-success" style="margin-top: 10px;">Envoyer</button>
+                      </form>
+                    
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

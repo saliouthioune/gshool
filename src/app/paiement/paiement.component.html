@@ -1,0 +1,81 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire de Paiement d'une Elève</h5>
+                <form name="specForm" (ngSubmit)="s.form.valid && onSubmit()" #s="ngForm" novalidate>
+                 
+                    <div class="form-group">
+                        <label for="mois">Mois</label>
+                        <select required [(ngModel)]="doc.mois" name="mois" class="form-select">
+                            <option *ngFor="let moi of moiss" [value]="moi">{{moi}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="speciality">Montant</label>
+                        <input type="number" name="montant" id="mois" class="form-control" [(ngModel)]="doc.montant"
+                            #montant="ngModel" [ngClass]=" {'is-invalid' : s.submitted && montant?.invalid} " required />
+                        <div class="invalid-feedback" *ngIf="s.submitted && montant?.invalid">
+                            <div *ngIf="montant?.errors?.['required']">Montant is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datenaissance">DatePaiement</label>
+                        <input type="date" name="datep" class="form-control" [(ngModel)]="doc.datep" #datep="ngModel"
+                            [ngClass]="{'is-invalid' : s.submitted && datep?.invalid }" required />
+                        <div *ngIf="s.submitted && datep?.invalid" class="invalid-feedback">
+                            <div *ngIf="datep?.errors?.['required']">DatePaiement is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">etudiant Id</label>
+                        <input type="number" name="etudiant" id="id"  class="form-control" [(ngModel)]="doc.etudiant.id"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" name="name" id="name"   class="form-control" [(ngModel)]="doc.name"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control" [(ngModel)]="doc.email"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone"   class="form-control" [(ngModel)]="doc.phone"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <input type="text" name="address" id="address"   class="form-control" [(ngModel)]="doc.address"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="sexe">Sexe</label>
+                        <input type="text" name="sexe" id="sexe"  class="form-control" [(ngModel)]="doc.sexe"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="speciality">Prenom</label>
+                        <input type="text" name="prenom" id="nom" class="form-control" [(ngModel)]="doc.prenom"
+                             required />
+                        
+                    </div>
+                    <button class="btn btn-primary">{{btn}}</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

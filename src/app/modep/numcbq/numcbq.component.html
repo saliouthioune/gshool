@@ -1,0 +1,22 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire de Paiement d'une Elève</h5>
+                <form name="specForm" (ngSubmit)="s.form.valid && onSubmit()" #s="ngForm" novalidate>
+                 
+                    <div class="form-group">
+                        <label for="mois">Numero de la Carte banque</label>
+                        <input required type="tel" name="numero" class="form-control" [(ngModel)]="numero" placeholder="Numero carte bancaire"/>
+                    </div>
+                    
+                    <br /><br />
+                    <button class="btn btn-primary">{{btn}}</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

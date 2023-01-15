@@ -1,0 +1,28 @@
+<app-index></app-index>
+<div class="container" style="margin-top: 8%;">
+    <div class="text-center">
+        <h3>Annee Page</h3>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+
+            <form name="docForm" (ngSubmit)="d.form.valid && onSubmit()" #d="ngForm" novalidate>
+
+                <!-- docName -->
+                <div class="form-group">
+                    <label for="name">Annee</label>
+                    <input type="text" name="nom" class="form-control" [(ngModel)]="year.nom" #nom="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && nom?.invalid }" required />
+                    <div *ngIf="d.submitted && nom?.invalid" class="invalid-feedback">
+                        <div *ngIf="nom?.errors?.['required']">Year is required</div>
+                    </div>
+                </div>
+                <!-- dept -->
+                <br>
+                <button class="btn btn-primary">{{btn}}</button>
+        
+                <br><br>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire de Planification d'un Cour</h5>
+                <form  (ngSubmit)="onSubmit()" #s="ngForm" novalidate>
+                    <div class="form-group" >
+                        <label for="speciality">Heure debut</label>
+                        <input type="time" name="hdebut" min="08:00" id="hdebut" max="18:00"  class="form-control" [(ngModel)]="ins.hdebut"
+                             required />
+                    </div>
+                    <div class="form-group" >
+                        <label for="speciality">Heure fin</label>
+                        <input type="time" name="hfin"  id="hfin" min="08:00" max="18:00"  class="form-control" [(ngModel)]="ins.hfin"
+                             required />
+                    </div>
+                    <div class="form-group">
+                        <label for="speciality">Date Cour</label>
+                        <input type="date" name="nom" id="nom" class="form-control" [(ngModel)]="ins.datec"
+                             required />
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Classe</label>
+                        <select name="annee" class="form-select" [(ngModel)]="ins.classe.classId">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option [value]="an.classId" *ngFor="let an of clas">
+                                {{an.nom}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Enseignant</label>
+                        <select name="annee" class="form-select" [(ngModel)]="ins.prof.id">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option [value]="an.id" *ngFor="let an of profs">
+                                {{an.nom}} {{an.prenom}} {{an.sexe}}{{an.address}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Matiere</label>
+                        <select name="matiere" class="form-select" [(ngModel)]="ins.matiere.matId">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option [value]="an.matId" *ngFor="let an of mats">
+                                 {{an.nom}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Semestre</label>
+                        <select name="semestre" class="form-select" [(ngModel)]="ins.semestre.semId">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option [value]="an.semId" *ngFor="let an of sems">
+                                {{an.nom}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="annee">Salle</label>
+                        <select name="semestre" class="form-select" [(ngModel)]="ins.salle.salleId">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option [value]="an.salleId" *ngFor="let an of salles">
+                                 {{an.nom}}
+                            </option>
+                        </select>
+                    </div>
+                    <br/>
+                    <button class="btn btn-primary">{{btn}}</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

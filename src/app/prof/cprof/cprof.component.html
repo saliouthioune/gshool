@@ -1,0 +1,43 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 5px;">
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="margin-right: 15px">
+        <button class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+      </li>
+      <div class="form-inline">
+        <input class="form-control mr-sm-2" type="text"  placeholder="Search">
+        
+      </div>
+    </ul>
+  </nav>
+<br/>
+<div class="page container-fluid" size="A4" id="pdf">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Classe</th>
+          <th>Heure debut</th>
+          <th>Heure Fin</th>
+           <th>Salle</th>
+      </tr>
+      </thead>
+        <tbody>
+          <tr *ngFor="let c of css">
+                  <ng-container *ngIf="c.prof.id==id">
+                    <td>{{c.classe.nom}}</td>
+                    <td>{{c.hdebut}}</td>
+                    <td>{{c.hfin}}</td> 
+                    <td>{{c.salle.nom}}</td>
+              
+            </ng-container>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<button class="btn btn-primary" (click)="getPDF()" style="margin-left: 50px;">Télécharger emplois du temps</button>
+
+
+
+
+

@@ -1,0 +1,81 @@
+<div class="container-fluid" style="cursor: pointer; border: 1px solid silver;height:60px; background-color:rgb(35, 64, 196); height: 75px;"
+  >
+  <div class="row">
+    <div class="col-2"><h6> Systeme gestion d'ecole</h6></div>
+    
+    <div class="col-3">
+      <a *ngIf="showEtudiantBoard">Bienvenu {{ username }} {{ eleve.name }} {{ eleve.prenom }}</a>
+      <a *ngIf="showCaissiereBoard">Bienvenu {{ username }} {{ cais.name }} {{ cais.prenom }}</a>
+      <a *ngIf="showAdminBoard">Bienvenu {{ username }}</a>
+      <a *ngIf="showEnseignantBoard">Bienvenu {{ username }} {{ prof.nom }} {{ prof.prenom }}</a>
+    </div>
+    <div class="col-2"><a (click)="about()">à propos de nous</a></div>
+    <div class="col-1">
+      <a (click)="contact()">Contact</a>
+    </div>
+    <div class="col-1">
+      <a >Inscrire</a>
+    </div>
+    <div class="col-1">
+      <a><i class="bi bi-person-fill"></i>Eleve</a>
+    </div>
+    <div class="col-2">
+      <a (click)="logout()"><i class="bi bi-arrow-left-short"></i>Deconnecter</a>
+    </div>
+  </div>
+</div>
+<div id="mySidenav" class="sidenav">
+  <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+  <span style="color: white;" *ngIf="showEtudiantBoard">{{eleve.email}}</span>
+  <span style="color: white;" *ngIf="showCaissiereBoard">{{cais.email}}</span>
+  <span style="color: white;" *ngIf="showEnseignantBoard">{{prof.email}}</span>
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+  <a (click)="home()"> <i class="bi bi-house-fill"></i>Acceuil</a>
+  <!-- <a href=""><i class="bi bi-share"></i>Share</a>
+  <a href=""><i class="bi bi-globe"></i>Internet</a>
+  <a href=""><i class="bi bi-geo-alt-fill"></i>Localisation</a>
+  <a href=""><i class="bi bi-gear"></i>Parametre</a>-->
+<!-- Roles Caissiere-->
+  <a (click)="gotopaiementei()" *ngIf="showCaissiereBoard">Nouveau paiement</a>
+  <!-- Roles Admin-->
+  <a (click)="gotopaiementei()" *ngIf="showAdminBoard">Nouveau paiement</a>
+  <a (click)="etudiantList()" *ngIf="showAdminBoard">Elèves</a>
+  <a (click)="gotoclassei()" *ngIf="showAdminBoard">Liste des classes</a>
+  <a (click)="gotodirecteur()" *ngIf="showAdminBoard">Directeur</a>
+  <a (click)="profList()" *ngIf="showAdminBoard">Professeurs</a>
+  <a (click)="addcais()" *ngIf="showAdminBoard">Caissiere</a>
+  <a (click)="salleList()" *ngIf="showAdminBoard">Salles</a>
+  <a (click)="batimentList()" *ngIf="showAdminBoard">liste Batiments</a>
+  <a (click)="listeSemestre()" *ngIf="showAdminBoard">Semestres</a>
+  <a (click)="classList()" *ngIf="showAdminBoard">Classes</a>
+  <a (click)="listeNote()" *ngIf="showAdminBoard">Liste des notes</a>
+  <a (click)="listeMatiere()" *ngIf="showAdminBoard">Matieres</a>
+  <a (click)="listeCour()" *ngIf="showAdminBoard">cours</a>
+  <a (click)="annee()" *ngIf="showAdminBoard">Annee Academique</a>
+  <!--<a (click)="sentmessage()" *ngIf="showAdminBoard">Envoyer Message</a> -->
+  <a (click)="gotorelevetei()" *ngIf="showAdminBoard">Releves de notes</a>
+ 
+  <!-- Roles Etudiant-->
+  <a (click)="gotoModep()" *ngIf="showEtudiantBoard">Payer</a>
+  <a (click)="listeCourclasse()" *ngIf="showEtudiantBoard">Emplois du temps</a>
+  <!-- Roles Enseignant-->
+  <a (click)="gotoclassei()" *ngIf="showEnseignantBoard">Liste des classes</a>
+  <a (click)="listecourprof()" *ngIf="showEnseignantBoard">Emplois du temps</a>
+  <!-- Roles Directeur-->
+  <a (click)="gotoclassei()" *ngIf="showDirecteurBoard">Liste des élèves clas</a>
+  <a (click)="etudiantList()" *ngIf="showDirecteurBoard">Voir liste Elève</a>
+  <a (click)="etudiantNew()" *ngIf="showDirecteurBoard">Ajouter Nouveau Elève</a>
+  <a (click)="inscrire()" *ngIf="showDirecteurBoard">Inscrire</a>
+  <a (click)="profList()" *ngIf="showDirecteurBoard">Professeur</a>
+  <a (click)="salleList()" *ngIf="showDirecteurBoard">Voir liste Salles</a>
+  <a (click)="batimentList()" *ngIf="showDirecteurBoard">liste Batiments</a>
+  <a (click)="listeSemestre()" *ngIf="showDirecteurBoard">Liste des semestres</a>
+  <a (click)="classList()" *ngIf="showDirecteurBoard">liste Classe</a>
+  <a (click)="listeNote()" *ngIf="showDirecteurBoard">Liste des notes</a>
+  
+</div>
+<span class="hamburger" id="hamburger" (click)="openNav()">☰ </span>
+
+
+<!-- </div> -->
+<router-outlet></router-outlet>

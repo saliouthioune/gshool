@@ -1,0 +1,99 @@
+<div class="body" style="margin-top: 7.3%;">
+  <div class="page" size="A4" id="pdf">
+    <button (click)="print()" class="btn btn-primary" style="margin-top: 5px; margin-left: 5px;">Print</button>
+    <p style="margin-left: 5%;">Le groupe les pédagogues</p>
+    <h1 style="text-align: center;">BULLETIN DE NOTE</h1>
+    <img src="assets/Image/i1.png" alt="height:15px">
+    <div class="container">
+      <div id="civilite">
+        <div>
+          <span>Civilite: {{etu.sexe}}</span>
+          <span style="margin-left: 10px;">Prenom: {{etu.prenom}}</span> <span
+            style="margin-left: 15px;">Nom:{{etu.name}}</span>
+          <span style="margin-left: 30px;">Anne Scolaire:{{promo}}</span>
+
+          <span>Semestre :{{semId}}</span>
+        </div>
+        <div>
+          Né le :{{etu.datenaissance}} <span style="margin-left: 20px;">Classe:{{classe.nom}}</span>
+        </div>
+      </div>
+      <div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Discipline</th>
+              <th>Note</th>
+              <th>Coef</th>
+              <th>Moy x</th>
+              <th>Appréciation</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of notess">
+            <tr>
+              <ng-container *ngIf="item.semestre.semId===semestre.semId">
+                <td>{{item.matiere.nom}}</td>
+                <td>{{item.note}}</td>
+                <td>{{item.coef}}</td>
+                <td>{{item.note}}*{{item.coef}}</td>
+                <ng-container>
+                  <td *ngIf="item.note>=0 && 10>item.note">Insuffisant</td>
+                  <td *ngIf="item.note>=10 && 12>item.note">Passable</td>
+                  <td *ngIf="item.note>=12 && 14>item.note">Assez Bien</td>
+                  <td *ngIf="item.note>=14 && 16>item.note">Bien</td>
+                  <td *ngIf="item.note>=16 && 18>item.note">Tres Bien</td>
+                  <td *ngIf="item.note>=18">Excellent</td>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </tbody>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td>{{sommecoef}}</td>
+            <td>{{somme}}</td>
+          </tr>
+          <tr>
+            <td>Moyenne</td>
+            <td></td>
+            <td>{{moyen}}</td>
+            <td></td>
+            <ng-container>
+              <td *ngIf="moyen>=0 && 10>moyen">Insuffisant</td>
+              <td *ngIf="moyen>=10 && 12>moyen">Passable</td>
+              <td *ngIf="moyen>=12 && 14>moyen">Assez Bien</td>
+              <td *ngIf="moyen>=14 && 16>moyen">Bien</td>
+              <td *ngIf="moyen>=16 && 18>moyen">Tres Bien</td>
+              <td *ngIf="moyen>=18">Excellent</td>
+            </ng-container>
+          </tr>
+        </table>
+      </div>
+      <div class="row col-md-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td colspan="4">Decision du jury</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Encouragement</td>
+              <td *ngIf="moyen>=10"> X</td>
+            </tr>
+            <tr>
+              <td>Autorisé à redoubler</td>
+              <td *ngIf="moyen>=9 && 5>moyen">X</td>
+            </tr>
+            <tr>
+              <td>ExcluSion</td>
+              <td *ngIf="moyen<5">X</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-left: 85%;">Le Chef de l'Etablissement</p>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" (click)="getPDF()" style="margin-left: 50px;">Imprimer le Relevet</button>

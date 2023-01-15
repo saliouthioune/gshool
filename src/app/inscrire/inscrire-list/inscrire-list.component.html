@@ -1,0 +1,56 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 8px;">
+  <a class="navbar-brand" href="#">Student List</a>
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" style="margin-right: 15px">
+      <button class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+     
+    </li>
+    <div class="form-inline">
+      <input class="form-control mr-sm-2" type="text">
+      <!-- <button class="btn btn-success" type="submit">Search</button> -->
+    </div>
+  </ul>
+</nav>
+<br />
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>InsId</th>
+        <th>Nom</th>
+        <th>Classe</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+   <tbody>
+    <tr *ngFor="let doc of ins">
+      <td>{{ doc.insId }}</td>
+      <td>{{ doc.promo }}</td>
+      <td>{{ doc.classe.nom }}</td>
+      <td>{{doc.etudiant.name}}</td>
+      <td>{{doc.etudiant.prenom}}</td>
+      <td>
+        <a  [routerLink]="['/relevet']" [queryParams]="{ idetudiant:doc.etudiant.id,classeId:doc.classe.classId,p:doc.promo,semId:1}">
+          relevet1
+        </a>
+
+        <a  [routerLink]="['/relevet']" [queryParams]="{ idetudiant:doc.etudiant.id,classeId:doc.classe.classId,p:doc.nom,semId:2}">
+          relevet2
+        </a>
+        &nbsp;&nbsp;
+        <button  class="btn btn-danger">
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="ins && ins.length == 0">
+      <td colspan="7">No records found!</td>
+    </tr>
+   </tbody>
+    
+  </table>
+</div>

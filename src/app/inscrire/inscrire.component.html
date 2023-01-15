@@ -1,0 +1,80 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+    <span>{{e.prenom}}</span>
+    <div class="container">
+        
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire d'inscription d'un Elève</h5>
+                <form  (ngSubmit)="onSubmit()" #s="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="promo">Promotion</label>
+                        <select  required [(ngModel)]="ins.annee.annecadId" id="promo" name="anne" class="form-select">
+                            <option  *ngFor="let ps of promos"  [value]="ps.annecadId">{{ps.nom}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        
+                        <input type="hidden" name="insId" id="insId"  class="form-control" [(ngModel)]="ins.insId"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        
+                        <input type="hidden" name="id" id="id"  class="form-control" [(ngModel)]="ins.etudiant.id"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" name="name" id="name"   class="form-control" [(ngModel)]="ins.etudiant.name"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control" [(ngModel)]="ins.etudiant.email"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone"   class="form-control" [(ngModel)]="ins.etudiant.phone"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresse</label>
+                        <input type="text" name="address" id="address"   class="form-control" [(ngModel)]="ins.etudiant.address"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="sexe">Sexe</label>
+                        <input type="text" name="nom" id="sexe"  class="form-control" [(ngModel)]="ins.etudiant.sexe"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="speciality">Prenom</label>
+                        <input type="text" name="prenom" id="nom" class="form-control" [(ngModel)]="ins.etudiant.prenom"
+                             required />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="classe">Classe</label>
+                        <select name="classe" class="form-select" id="classe" [(ngModel)]="ins.classe.classId" name="classe">
+                            <!-- <option value="">Choose speciality</option> -->
+                            <option  *ngFor="let an of classe" [value]="an.classId">
+                                {{an.nom}}
+                            </option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 2px;">{{btn}}</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 0px;">
+    
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="margin-right: 15px">
+        <button class="btn btn-primary" (click)="gotoProf()">New Professeur</button>
+      </li>
+      <div class="form-inline">
+        <input class="form-control mr-sm-2" type="text"  placeholder="Search">
+        <!-- <button class="btn btn-success" type="submit">Search</button> -->
+      </div>
+    </ul>
+  </nav>
+<br/>
+<div >
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Email</th>
+          <th>Sexe</th>
+          <th>Address</th>
+          <th>ACTIONS</th>
+      </tr>
+      </thead>
+        <tbody>
+          <tr *ngFor="let p of profs">
+            <td>{{ p.id }}</td>
+            <td>{{ p.nom }}</td>
+            <td>{{ p.prenom }}</td>
+            <td>{{ p.email }}</td>
+            <td>{{ p.sexe }}</td>
+            <td>{{ p.address }}</td>
+            
+            <td>
+                <button  class="btn btn-info" (click)="gotoUpdateProf(p.id)">
+                  <i class="bi bi-pen"></i>
+                </button>
+                &nbsp;&nbsp;
+                <button  (click)="deleteProf(p.id)" class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+        </button>
+            </td>
+        </tr>
+        <tr *ngIf="profs && profs.length == 0">
+            <td colspan="7">No records found!</td>
+        </tr>
+        </tbody>
+        
+    </table>
+</div>

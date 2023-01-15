@@ -1,0 +1,74 @@
+<app-index></app-index>
+<div style="margin-top: 5px;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire d'ajout de note</h5>
+                    <form (ngSubmit)="onSubmit()" #s="ngForm" novalidate>
+                        <div class="form-group">
+                            <div class="form-group">
+
+                                <input type="hidden" name="id" id="id" class="form-control" [(ngModel)]="simn.etudiant.id"
+                                    required />
+                            </div>
+                            <label for="nom">Nom</label>
+                            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="simn.name"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prenom</label>
+                            <input type="text" name="prenom" id="prenom" class="form-control" [(ngModel)]="simn.prenom"
+                                required />
+                        </div>
+                        <div class="form-group">
+                            <label for="speciality">Note</label>
+                            <input type="number" name="note" id="nom" class="form-control" [(ngModel)]="simn.note"
+                                required />
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="annee">Matiere</label>
+                            <select name="matiere" class="form-select" [(ngModel)]="simn.matiere.matId">
+                                <!-- <option value="">Choose speciality</option> -->
+                                <option [value]="an.matId" *ngFor="let an of mats">
+                                    {{an.nom}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="annee">Coefficient</label>
+                            <select name="matiere" class="form-select" [(ngModel)]="simn.coef">
+                                <!-- <option value="">Choose speciality</option> -->
+                                <option [value]="an.coef" *ngFor="let an of mats">
+                                    {{an.coef}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="annee">Semestres</label>
+                            <select name="etudiant" class="form-select" [(ngModel)]="simn.semestre.semId">
+                                <!-- <option value="">Choose speciality</option> -->
+                                <option [value]="an.semId" *ngFor="let an of semestres">
+                                    {{an.nom}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="annee">Classe</label>
+                            <select name="etudiant" class="form-select" [(ngModel)]="simn.etudiant.id">
+                                <!-- <option value="">Choose speciality</option> -->
+                                <option  [value]="an.etudiant.id" *ngFor="let an of listeinscrit">
+                                    {{an.classe.nom}}
+                                </option>
+                            </select>
+                        </div>
+                        <br />
+                        <button class="btn btn-primary">{{btn}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

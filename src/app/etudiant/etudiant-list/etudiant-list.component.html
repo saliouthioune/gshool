@@ -1,0 +1,64 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 8px;">
+  <a class="navbar-brand" href="#">Student List {{ desc }}</a>
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" style="margin-right: 15px">
+      <button class="btn btn-primary" (click)="gotoDoctor()"><i class="bi bi-plus-lg"></i></button>
+    </li>
+    <div class="form-inline">
+      <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" placeholder="Search">
+      <!-- <button class="btn btn-success" type="submit">Search</button> -->
+    </div>
+  </ul>
+</nav>
+<br />
+<div class="container-fluid">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th >Id</th>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Sexe</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>DateNaissance</th>
+        <th>Photo</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+   <tbody>
+    <tr *ngFor="let doc of etudiantList | etudiantFilter:search">
+      <td>{{ doc.id }}</td>
+      <td>{{doc.username}}</td>
+      <td>{{ doc.name }}</td>
+      <td>{{ doc.prenom }}</td>
+      <td>{{ doc.email }}</td>
+      <td>{{ doc.sexe }}</td>
+      <td>{{ doc.phone }}</td>
+      <td>{{ doc.address }}</td>
+      <td>{{ doc.datenaissance }}</td>
+      <td> <img class="custom-image-style" img src="{{doc.retrievedImage}}"  height="80" width="80" style="margin-left: 60px;
+        margin-top: 2px"></td>
+      <td>
+        <button (click)="getDoctor(doc.id)" class="btn btn-info">
+          <i class="bi bi-pen"></i>
+        </button>
+        &nbsp;&nbsp;
+        <button (click)="deleteDoctor(doc.id)" class="btn btn-danger">
+          <i class="bi bi-trash"></i>
+          
+        </button>
+        <button (click)="goinscrire(doc.id)" class="btn btn-success" style="margin-left: 2px;">Inscrire</button>
+      </td>
+    </tr>
+    <tr *ngIf="etudiantList && etudiantList.length == 0">
+      <td colspan="7">No records found!</td>
+    </tr>
+   </tbody>
+    
+  </table>
+</div>

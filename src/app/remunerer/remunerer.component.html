@@ -1,0 +1,35 @@
+<app-index></app-index>
+<div  style="margin-top: 5px;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">Formulaire de Paiement d'une Elève</h5>
+                <form name="specForm" (ngSubmit)="s.form.valid && onSubmit()" #s="ngForm" novalidate>
+                 
+                    <div class="form-group">
+                        <label for="mois">Mois</label>
+                        <select required [(ngModel)]="doc.mois" name="mois" class="form-select">
+                            <option *ngFor="let moi of moiss" [value]="moi">{{moi}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="speciality">Montant</label>
+                        <input type="number" name="montant" id="mois" class="form-control" [(ngModel)]="doc.montant"
+                            #montant="ngModel" [ngClass]=" {'is-invalid' : s.submitted && montant?.invalid} " required />
+                        <div class="invalid-feedback" *ngIf="s.submitted && montant?.invalid">
+                            <div *ngIf="montant?.errors?.['required']">Montant is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="etudiant">Etudiant</label>
+                        <input type="text" name="id" [(ngModel)]="doc.id">
+                    </div>
+                    <br /><br />
+                    <button class="btn btn-primary">{{btn}}</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

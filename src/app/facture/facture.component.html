@@ -1,0 +1,32 @@
+<app-index></app-index>
+<div class="body" style="margin-top: 7.3%;">
+    <div class="page" size="A3" id="pdf">
+        <div class="p-5">
+            <section class="product-area mt-4">
+                <p>Ministere de L'enseignement du Sénégal</p>
+                <p>Elcole le groupe les pédagogues</p>
+                <p>Annee Scolaire:2021-2022</p>
+                <img src="assets/Image/i1.png" alt="height:20px">
+
+                <p id="paie" style="text-align: center; color: white;">Details Paiement</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>Operation No:</p>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" value={{paiement.paiementId}} type="text" readonly/>
+                    </div>
+                    
+                </div>
+                <p><b> Operation Montant: <span>{{paiement.montant}}</span></b></p>
+                <p><b> Operation Mois: <span>{{paiement.mois}}</span></b></p>
+                <p id="paie" style="text-align: center; color: white;">Informations Sur l'étudiant</p>
+                <p><b> IdEtudiant: <span>{{paiement.etudiant.id}}</span></b></p>
+                
+                <p><b> Nom: <span>{{e.name}}</span></b></p>
+                <p><b> Prenom: <span>{{e.prenom}}</span></b></p>
+            </section>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" (click)="getPDF()" style="margin-left: 50px;">Imprimer la Facture</button>

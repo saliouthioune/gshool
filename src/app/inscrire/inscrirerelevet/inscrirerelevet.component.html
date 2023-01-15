@@ -1,0 +1,55 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 8px;">
+  <a class="navbar-brand" href="#">Student List</a>
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" style="margin-right: 15px">
+      <button class="btn btn-primary"><i class="bi bi-plus-lg"></i></button>
+
+    </li>
+    <div class="form-inline">
+      <input class="form-control mr-sm-2" type="text">
+      <!-- <button class="btn btn-success" type="submit">Search</button> -->
+    </div>
+  </ul>
+</nav>
+<br />
+  <div class="container-fluid">
+    <h1>Liste des élèves de la classe {{c}}</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Phone</th>
+          <th>Adresse</th>
+          <th>Sexe</th>
+          <th>Relevés</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of listei">
+          <ng-container *ngIf="doc.promo==p && doc.classe.nom==c">
+          <td>{{ doc.etudiant.name }}</td>
+          <td>{{ doc.etudiant.prenom }}</td>
+          <td>{{ doc.etudiant.phone }}</td>
+          <td>{{ doc.etudiant.address }}</td>
+          <td>{{ doc.etudiant.sexe }}</td>
+              <li>
+                <a  [routerLink]="['/relevet']" [queryParams]="{ idetudiant:doc.etudiant.id,classeId:doc.classe.classId,p:doc.promo,semId:1}">
+                    Semestre1
+                  </a>
+                  <a  [routerLink]="['/relevet']" [queryParams]="{ idetudiant:doc.etudiant.id,classeId:doc.classe.classId,p:doc.nom,semId:2}">
+                    Semestre2
+                  </a>
+              </li>
+            </ng-container>
+        </tr>
+        <tr *ngIf="liste && liste.length == 0">
+          <td colspan="7">No records found!</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+

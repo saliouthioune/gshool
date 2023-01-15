@@ -1,0 +1,57 @@
+<app-index></app-index>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="margin-top: 7.3%;">
+    <a class="navbar-brand" href="#">Etudiant List {{ desc }}</a>
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" style="margin-right: 15px">
+        <button class="btn btn-primary" >New Etudiant</button>
+      </li>
+      <div class="form-inline">
+        <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" placeholder="Search">
+        <!-- <button class="btn btn-success" type="submit">Search</button> -->
+      </div>
+    </ul>
+  </nav>
+<br/>
+<div class="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Prenom</th>
+          <th>Email</th>
+          <th>Sexe</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>DateNaissance</th>
+          <th>ACTIONS</th>
+      </tr>
+      </thead>
+        <tbody>
+          <tr *ngFor="let doc of etudiantList | etudiantFilter:search">
+            <td>{{ doc.etudiantId }}</td>
+            <td>{{ doc.name }}</td>
+            <td>{{ doc.prenom }}</td>
+            <td>{{ doc.email }}</td>
+            <td>{{ doc.sexe }}</td>
+            <td>{{ doc.phone }}</td>
+            <td>{{ doc.address }}</td>
+            <td>{{ doc.datenaissance }}</td>
+            <td>
+                <button (click)="getDoctor(doc.etudiantId)" class="btn btn-info">
+                    Update
+                </button>
+                &nbsp;&nbsp;
+                <button (click)="deleteDoctor(doc.etudiantId)" class="btn btn-danger">
+          Delete
+        </button>
+            </td>
+        </tr>
+        <tr *ngIf="etudiantList && etudiantList.length == 0">
+            <td colspan="7">No records found!</td>
+        </tr>
+        </tbody>
+        
+    </table>
+</div>

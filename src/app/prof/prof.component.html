@@ -1,0 +1,82 @@
+<app-index></app-index>
+<div class="container" style="margin-top: 5px;">
+    <div class="row justify-content-center align-items-center">
+        <div class=" card col-10 col-md-8 col-lg-6" style="background-color:rgb(35, 64, 196);">
+           <div class="cord-body">
+            <h5 class="card-title" style="text-align: center;">Formulaire d'inscription d'un Enseignement</h5>
+            <form name="docForm" (ngSubmit)="d.form.valid && onSubmit()" #d="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" name="username" class="form-control" [(ngModel)]="prof.username" #username="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && username?.invalid }" required />
+                    <div *ngIf="d.submitted && username?.invalid" class="invalid-feedback">
+                        <div *ngIf="username?.errors?.['required']">Etudiant Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" name="password" class="form-control" [(ngModel)]="prof.password" #password="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && password?.invalid }" required />
+                    <div *ngIf="d.submitted && password?.invalid" class="invalid-feedback">
+                        <div *ngIf="password?.errors?.['required']">Etudiant Password is required</div>
+                    </div>
+                </div>
+                <!-- docName -->
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" class="form-control" [(ngModel)]="prof.nom" #name="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && name?.invalid }" required />
+                    <div *ngIf="d.submitted && name?.invalid" class="invalid-feedback">
+                        <div *ngIf="name?.errors?.['required']">Etudiant Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" name="prenom" class="form-control" [(ngModel)]="prof.prenom" #prenom="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && prenom?.invalid }" required />
+                    <div *ngIf="d.submitted && prenom?.invalid" class="invalid-feedback">
+                        <div *ngIf="prenom?.errors?.['required']">Etudiant prenom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Age</label>
+                    <input type="number" name="phone" class="form-control" [(ngModel)]="prof.age" #phone="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && phone?.invalid }" required />
+                    <div *ngIf="d.submitted && phone?.invalid" class="invalid-feedback">
+                        <div *ngIf="phone?.errors?.['required']">Etudiant prenom is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control" [(ngModel)]="prof.email" #email="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && email?.invalid }" required />
+                    <div *ngIf="d.submitted && email?.invalid" class="invalid-feedback">
+                        <div *ngIf="email?.errors?.['required']">Etudiant email is required</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sexe">Sexe</label>
+                    <select required [(ngModel)]="prof.sexe" name="sexe" class="form-control">
+                        <option *ngFor="let se of sexes" [value]="se">{{se}}</option>
+                    </select>
+                </div>
+                <!-- date -->
+                <!-- docAdd -->
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" class="form-control" [(ngModel)]="prof.address" #address="ngModel"
+                        [ngClass]="{'is-invalid' : d.submitted && address?.invalid }" required />
+                    <div *ngIf="d.submitted && address?.invalid" class="invalid-feedback">
+                        <div *ngIf="address?.errors?.['required']">Etudiant Address is required</div>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary">{{btn}}</button>
+                <button class="btn btn-info" style="margin-left: 25px;" (click)="reset()">reset</button>
+                <br><br>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
